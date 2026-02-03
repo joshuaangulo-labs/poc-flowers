@@ -1,0 +1,81 @@
+@{
+    var isNew = (bool?)ViewData["IsNew"] ?? true;
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>@(isNew ? "Create Schedule" : "Edit Schedule")</h1>
+    </div>
+
+    <form class="form" id="schedule-form">
+        <div class="form-section">
+            <h2>Schedule Details</h2>
+            <div class="form-group">
+                <label for="gift">Gift</label>
+                <select id="gift" name="gift" class="form-input" required>
+                    <option value="">Select a gift...</option>
+                    <option value="1">Birthday Flowers (Emily)</option>
+                    <option value="2">Graduation Watch (Emily)</option>
+                    <option value="3">Book Collection (Michael)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Delivery Schedule</h2>
+            <div class="form-group">
+                <label for="scheduleType">Schedule Type</label>
+                <select id="scheduleType" name="scheduleType" class="form-input" required>
+                    <option value="once">One-time delivery</option>
+                    <option value="annual">Annual (same date each year)</option>
+                    <option value="custom">Custom recurring</option>
+                </select>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" name="startDate" class="form-input" required />
+                </div>
+                <div class="form-group" id="end-date-group">
+                    <label for="endDate">End Date (optional)</label>
+                    <input type="date" id="endDate" name="endDate" class="form-input" />
+                    <small>Leave blank for indefinite recurring</small>
+                </div>
+            </div>
+            <div class="form-group" id="occasion-group">
+                <label for="occasion">Linked Occasion</label>
+                <select id="occasion" name="occasion" class="form-input">
+                    <option value="">No specific occasion</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="holiday">Holiday</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Activation</h2>
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="activation" value="immediate" checked />
+                    Start immediately (or on start date)
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="activation" value="death" />
+                    Activate after death verification
+                </label>
+            </div>
+            <p class="form-help">
+                Gifts activated after death verification will only begin delivering once we've confirmed your passing through our verification process.
+            </p>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn-ghost" onclick="history.back()">Cancel</button>
+            <button type="submit" class="btn btn-primary">@(isNew ? "Create Schedule" : "Save Changes")</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,76 @@
+@{
+    var isNew = (bool?)ViewData["IsNew"] ?? true;
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>@(isNew ? "Add Beneficiary" : "Edit Beneficiary")</h1>
+    </div>
+
+    <form class="form" id="beneficiary-form">
+        <div class="form-section">
+            <h2>Personal Information</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" class="form-input" required />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" class="form-input" required />
+                </div>
+                <div class="form-group">
+                    <label for="relationship">Relationship</label>
+                    <select id="relationship" name="relationship" class="form-input">
+                        <option value="">Select relationship...</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="child">Child</option>
+                        <option value="parent">Parent</option>
+                        <option value="sibling">Sibling</option>
+                        <option value="grandchild">Grandchild</option>
+                        <option value="friend">Friend</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" id="birthday" name="birthday" class="form-input" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Contact Information</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea id="address" name="address" class="form-input" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Important Dates</h2>
+            <div id="important-dates">
+                <div class="date-entry">
+                    <input type="text" placeholder="Occasion (e.g., Anniversary)" class="form-input" />
+                    <input type="date" class="form-input" />
+                    <button type="button" class="btn btn-ghost btn-sm">Remove</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" id="add-date">+ Add Date</button>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn-ghost" onclick="history.back()">Cancel</button>
+            <button type="submit" class="btn btn-primary">@(isNew ? "Add Beneficiary" : "Save Changes")</button>
+        </div>
+    </form>
+</div>

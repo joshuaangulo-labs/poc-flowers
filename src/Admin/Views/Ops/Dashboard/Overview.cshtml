@@ -1,0 +1,138 @@
+<div class="admin-content">
+    <h1>Operations Dashboard</h1>
+    <p class="page-subtitle">System overview and quick actions</p>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value">247</div>
+            <div class="stat-label">Active Benefactors</div>
+            <div class="stat-change positive">+12 this month</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">1,842</div>
+            <div class="stat-label">Total Beneficiaries</div>
+            <div class="stat-change positive">+89 this month</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">156</div>
+            <div class="stat-label">Deliveries This Month</div>
+            <div class="stat-change">On track</div>
+        </div>
+        <div class="stat-card warning">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Pending Exceptions</div>
+            <a href="#exceptions" class="stat-action" data-route="/Ops/Deliveries/Exceptions">View →</a>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-section">
+            <h2>Pending Verifications</h2>
+            <div class="pending-list">
+                <div class="pending-item">
+                    <div class="pending-info">
+                        <div class="pending-name">John Smith</div>
+                        <div class="pending-detail">Death certificate submitted Jan 28</div>
+                    </div>
+                    <div class="pending-actions">
+                        <button class="btn btn-sm btn-primary">Review</button>
+                    </div>
+                </div>
+            </div>
+            <a href="#verifications" class="section-link" data-route="/Ops/Verifications/List">View all verifications →</a>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Recent Exceptions</h2>
+            <div class="exception-list">
+                <div class="exception-item">
+                    <span class="exception-type bounce">BOUNCE</span>
+                    <div class="exception-info">
+                        <div class="exception-title">Email delivery failed</div>
+                        <div class="exception-detail">emily@example.com — Birthday notification</div>
+                    </div>
+                    <button class="btn btn-sm btn-ghost">Handle</button>
+                </div>
+                <div class="exception-item">
+                    <span class="exception-type vendor">VENDOR</span>
+                    <div class="exception-info">
+                        <div class="exception-title">Vendor API timeout</div>
+                        <div class="exception-detail">FTD Flowers — Order #12345</div>
+                    </div>
+                    <button class="btn btn-sm btn-ghost">Retry</button>
+                </div>
+                <div class="exception-item">
+                    <span class="exception-type cost">COST</span>
+                    <div class="exception-info">
+                        <div class="exception-title">Price exceeded buffer</div>
+                        <div class="exception-detail">Gift #789 — $145 vs $100 budget</div>
+                    </div>
+                    <button class="btn btn-sm btn-ghost">Review</button>
+                </div>
+            </div>
+            <a href="#exceptions" class="section-link" data-route="/Ops/Deliveries/Exceptions">View all exceptions →</a>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Upcoming Deliveries (7 days)</h2>
+            <div class="upcoming-list">
+                <div class="upcoming-item">
+                    <div class="upcoming-date">Feb 5</div>
+                    <div class="upcoming-info">
+                        <div class="upcoming-gift">Birthday Flowers</div>
+                        <div class="upcoming-detail">To: Sarah Johnson (via FTD)</div>
+                    </div>
+                    <span class="badge badge-pending">Scheduled</span>
+                </div>
+                <div class="upcoming-item">
+                    <div class="upcoming-date">Feb 7</div>
+                    <div class="upcoming-info">
+                        <div class="upcoming-gift">Anniversary Gift</div>
+                        <div class="upcoming-detail">To: Michael Chen (via 1-800-Flowers)</div>
+                    </div>
+                    <span class="badge badge-pending">Scheduled</span>
+                </div>
+                <div class="upcoming-item">
+                    <div class="upcoming-date">Feb 9</div>
+                    <div class="upcoming-info">
+                        <div class="upcoming-gift">Valentine's Bouquet</div>
+                        <div class="upcoming-detail">To: Lisa Park (via FTD)</div>
+                    </div>
+                    <span class="badge badge-pending">Scheduled</span>
+                </div>
+            </div>
+            <a href="#deliveries" class="section-link" data-route="/Ops/Deliveries/List">View all deliveries →</a>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>System Health</h2>
+            <div class="health-list">
+                <div class="health-item">
+                    <span class="health-status ok"></span>
+                    <span class="health-name">Database</span>
+                    <span class="health-value">Healthy</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-status ok"></span>
+                    <span class="health-name">Descope Auth</span>
+                    <span class="health-value">Connected</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-status ok"></span>
+                    <span class="health-name">FTD API</span>
+                    <span class="health-value">Operational</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-status ok"></span>
+                    <span class="health-name">Email Service</span>
+                    <span class="health-value">Operational</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-status warning"></span>
+                    <span class="health-name">Background Worker</span>
+                    <span class="health-value">3 jobs queued</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

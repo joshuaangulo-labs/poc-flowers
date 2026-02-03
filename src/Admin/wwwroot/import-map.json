@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "utility_fetch": "/js/utility/fetch.js",
+    "utility_layout": "/js/utility/layout.js",
+    "utility_router": "/js/utility/router.js"
+  }
+}

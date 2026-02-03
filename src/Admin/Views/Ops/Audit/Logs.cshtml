@@ -1,0 +1,109 @@
+<div class="admin-content">
+    <div class="page-header">
+        <h1>Audit Logs</h1>
+        <p class="page-subtitle">System activity and administrative actions</p>
+    </div>
+
+    <div class="filter-bar">
+        <input type="search" placeholder="Search logs..." class="search-input" />
+        <select class="form-input filter-select">
+            <option value="">All Actions</option>
+            <option value="auth">Authentication</option>
+            <option value="user">User Management</option>
+            <option value="delivery">Delivery</option>
+            <option value="verification">Verification</option>
+            <option value="financial">Financial</option>
+        </select>
+        <select class="form-input filter-select">
+            <option value="">All Users</option>
+            <option value="system">System</option>
+            <option value="admin">Admin Users</option>
+        </select>
+        <input type="date" class="form-input" />
+    </div>
+
+    <div class="audit-log">
+        <div class="audit-entry">
+            <div class="audit-time">
+                <div class="audit-date">Feb 3, 2026</div>
+                <div class="audit-hour">2:45 PM</div>
+            </div>
+            <div class="audit-content">
+                <span class="audit-action auth">LOGIN</span>
+                <span class="audit-actor">admin@legacygifts.com</span>
+                <span class="audit-description">Admin user logged in</span>
+            </div>
+            <div class="audit-meta">
+                <span>IP: 192.168.1.100</span>
+            </div>
+        </div>
+        
+        <div class="audit-entry">
+            <div class="audit-time">
+                <div class="audit-date">Feb 3, 2026</div>
+                <div class="audit-hour">2:30 PM</div>
+            </div>
+            <div class="audit-content">
+                <span class="audit-action delivery">DELIVERY</span>
+                <span class="audit-actor">System</span>
+                <span class="audit-description">Order submitted to FTD for DEL-12345</span>
+            </div>
+            <div class="audit-meta">
+                <span>Vendor Order: FTD-789456</span>
+            </div>
+        </div>
+
+        <div class="audit-entry">
+            <div class="audit-time">
+                <div class="audit-date">Feb 3, 2026</div>
+                <div class="audit-hour">10:15 AM</div>
+            </div>
+            <div class="audit-content">
+                <span class="audit-action financial">PAYMENT</span>
+                <span class="audit-actor">System</span>
+                <span class="audit-description">Auto-refill processed for user john@example.com</span>
+            </div>
+            <div class="audit-meta">
+                <span>Amount: $1,000.00</span>
+            </div>
+        </div>
+
+        <div class="audit-entry">
+            <div class="audit-time">
+                <div class="audit-date">Feb 2, 2026</div>
+                <div class="audit-hour">4:00 PM</div>
+            </div>
+            <div class="audit-content">
+                <span class="audit-action verification">VERIFICATION</span>
+                <span class="audit-actor">ops@legacygifts.com</span>
+                <span class="audit-description">Death verification approved for Robert Wilson</span>
+            </div>
+            <div class="audit-meta">
+                <span>User ID: usr_xyz789</span>
+            </div>
+        </div>
+
+        <div class="audit-entry">
+            <div class="audit-time">
+                <div class="audit-date">Feb 2, 2026</div>
+                <div class="audit-hour">2:00 PM</div>
+            </div>
+            <div class="audit-content">
+                <span class="audit-action user">USER</span>
+                <span class="audit-actor">System</span>
+                <span class="audit-description">New benefactor registration: sarah@example.com</span>
+            </div>
+            <div class="audit-meta">
+                <span>via Descope</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <span class="pagination-info">Showing 1-5 of 1,247 entries</span>
+        <div class="pagination-controls">
+            <button class="btn btn-ghost btn-sm" disabled>← Previous</button>
+            <button class="btn btn-ghost btn-sm">Next →</button>
+        </div>
+    </div>
+</div>

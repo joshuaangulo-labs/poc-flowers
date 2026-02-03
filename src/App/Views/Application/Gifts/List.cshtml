@@ -1,0 +1,64 @@
+<div class="page-content">
+    <div class="page-header">
+        <h1>Gifts</h1>
+        <a href="#add" class="btn btn-primary" data-route="/Application/Gifts/Form">
+            <span>+</span> Create Gift
+        </a>
+    </div>
+
+    <div class="filter-bar">
+        <select class="form-input filter-select">
+            <option value="">All Beneficiaries</option>
+            <option value="1">Emily Johnson</option>
+            <option value="2">Michael Johnson</option>
+        </select>
+        <select class="form-input filter-select">
+            <option value="">All Status</option>
+            <option value="scheduled">Scheduled</option>
+            <option value="delivered">Delivered</option>
+            <option value="draft">Draft</option>
+        </select>
+    </div>
+
+    <div class="gifts-list" id="gifts-list">
+        <div class="card gift-card">
+            <div class="gift-icon">💐</div>
+            <div class="gift-content">
+                <h3>Birthday Flowers</h3>
+                <p>Spring bouquet with roses and lilies</p>
+                <div class="gift-meta">
+                    <span>For: Emily Johnson</span>
+                    <span>•</span>
+                    <span>Every March 15</span>
+                </div>
+            </div>
+            <span class="badge badge-success">Active</span>
+        </div>
+        <div class="card gift-card">
+            <div class="gift-icon">⌚</div>
+            <div class="gift-content">
+                <h3>Graduation Watch</h3>
+                <p>Engraved with "So proud of you — Love, Dad"</p>
+                <div class="gift-meta">
+                    <span>For: Emily Johnson</span>
+                    <span>•</span>
+                    <span>May 20, 2027</span>
+                </div>
+            </div>
+            <span class="badge badge-pending">Scheduled</span>
+        </div>
+        <div class="card gift-card">
+            <div class="gift-icon">📚</div>
+            <div class="gift-content">
+                <h3>Book Collection</h3>
+                <p>My favorite books collection</p>
+                <div class="gift-meta">
+                    <span>For: Michael Johnson</span>
+                    <span>•</span>
+                    <span>Every Christmas</span>
+                </div>
+            </div>
+            <span class="badge badge-success">Active</span>
+        </div>
+    </div>
+</div>

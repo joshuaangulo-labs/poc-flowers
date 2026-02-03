@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "utility_fetch": "/js/utility/fetch.js",
+    "utility_layout": "/js/utility/layout.js",
+    "utility_router": "/js/utility/router.js",
+    "module_application_dashboard_header": "/js/modules/application/dashboard/header.js",
+    "module_application_dashboard_sidebar": "/js/modules/application/dashboard/sidebar.js",
+    "module_application_dashboard_overview": "/js/modules/application/dashboard/overview.js"
+  }
+}

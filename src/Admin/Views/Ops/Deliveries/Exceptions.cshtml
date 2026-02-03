@@ -1,0 +1,105 @@
+<div class="admin-content">
+    <div class="page-header">
+        <h1>Exceptions</h1>
+        <p class="page-subtitle">Items requiring manual review or intervention</p>
+    </div>
+
+    <div class="filter-bar">
+        <select class="form-input filter-select">
+            <option value="">All Types</option>
+            <option value="bounce">Email Bounce</option>
+            <option value="vendor">Vendor Failure</option>
+            <option value="cost">Cost Spike</option>
+            <option value="address">Address Invalid</option>
+        </select>
+        <select class="form-input filter-select">
+            <option value="">All Priority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+    </div>
+
+    <div class="exceptions-list">
+        <div class="exception-card high">
+            <div class="exception-header">
+                <span class="exception-type bounce">EMAIL BOUNCE</span>
+                <span class="exception-priority high">High Priority</span>
+                <span class="exception-time">2 hours ago</span>
+            </div>
+            <div class="exception-body">
+                <h3>Email delivery failed for emily@example.com</h3>
+                <p>Birthday notification email bounced — mailbox not found.</p>
+                <dl class="exception-details">
+                    <dt>Beneficiary</dt>
+                    <dd>Emily Johnson</dd>
+                    <dt>Benefactor</dt>
+                    <dd>John Smith</dd>
+                    <dt>Scheduled Delivery</dt>
+                    <dd>Mar 15, 2026 (Birthday Flowers)</dd>
+                    <dt>Error</dt>
+                    <dd>550 5.1.1 The email account does not exist</dd>
+                </dl>
+            </div>
+            <div class="exception-actions">
+                <button class="btn btn-secondary">Update Contact</button>
+                <button class="btn btn-ghost">Retry</button>
+                <button class="btn btn-ghost">Dismiss</button>
+            </div>
+        </div>
+
+        <div class="exception-card medium">
+            <div class="exception-header">
+                <span class="exception-type vendor">VENDOR FAILURE</span>
+                <span class="exception-priority medium">Medium Priority</span>
+                <span class="exception-time">5 hours ago</span>
+            </div>
+            <div class="exception-body">
+                <h3>FTD API timeout on order submission</h3>
+                <p>Order failed to submit after 3 automatic retries.</p>
+                <dl class="exception-details">
+                    <dt>Order ID</dt>
+                    <dd>ORD-12345</dd>
+                    <dt>Gift</dt>
+                    <dd>Spring Bouquet</dd>
+                    <dt>Beneficiary</dt>
+                    <dd>Maria Garcia</dd>
+                    <dt>Delivery Date</dt>
+                    <dd>Feb 5, 2026</dd>
+                </dl>
+            </div>
+            <div class="exception-actions">
+                <button class="btn btn-primary">Retry Now</button>
+                <button class="btn btn-secondary">Use Alternate Vendor</button>
+                <button class="btn btn-ghost">Manual Fulfillment</button>
+            </div>
+        </div>
+
+        <div class="exception-card low">
+            <div class="exception-header">
+                <span class="exception-type cost">COST SPIKE</span>
+                <span class="exception-priority low">Low Priority</span>
+                <span class="exception-time">1 day ago</span>
+            </div>
+            <div class="exception-body">
+                <h3>Gift price exceeded budget by 45%</h3>
+                <p>Current vendor price is $145 vs original budget of $100.</p>
+                <dl class="exception-details">
+                    <dt>Gift</dt>
+                    <dd>Anniversary Roses (24 stems)</dd>
+                    <dt>Benefactor</dt>
+                    <dd>William Lee</dd>
+                    <dt>Original Budget</dt>
+                    <dd>$100.00</dd>
+                    <dt>Current Price</dt>
+                    <dd>$145.00</dd>
+                </dl>
+            </div>
+            <div class="exception-actions">
+                <button class="btn btn-primary">Approve Overage</button>
+                <button class="btn btn-secondary">Find Alternative</button>
+                <button class="btn btn-ghost">Contact Benefactor</button>
+            </div>
+        </div>
+    </div>
+</div>

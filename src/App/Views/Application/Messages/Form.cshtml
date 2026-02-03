@@ -1,0 +1,70 @@
+@{
+    var isNew = (bool?)ViewData["IsNew"] ?? true;
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>@(isNew ? "Write Message" : "Edit Message")</h1>
+    </div>
+
+    <form class="form" id="message-form">
+        <div class="form-section">
+            <h2>Message Details</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="beneficiary">For</label>
+                    <select id="beneficiary" name="beneficiary" class="form-input" required>
+                        <option value="">Select beneficiary...</option>
+                        <option value="1">Emily Johnson</option>
+                        <option value="2">Michael Johnson</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gift">Attach to Gift</label>
+                    <select id="gift" name="gift" class="form-input">
+                        <option value="">Select gift (optional)...</option>
+                        <option value="1">Birthday Flowers</option>
+                        <option value="2">Graduation Watch</option>
+                        <option value="3">Book Collection</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Your Message</h2>
+            <div class="form-group">
+                <label for="messageContent">Message</label>
+                <textarea id="messageContent" name="messageContent" class="form-input message-textarea" rows="12" placeholder="Write your heartfelt message here..."></textarea>
+                <div class="form-help">
+                    <span id="char-count">0</span> characters
+                </div>
+            </div>
+            <div class="ai-assist">
+                <p><strong>💡 Need inspiration?</strong></p>
+                <button type="button" class="btn btn-secondary btn-sm">Get AI suggestions</button>
+                <small>Our AI can help you craft the perfect message while keeping your authentic voice.</small>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Media Attachments</h2>
+            <div class="media-upload">
+                <div class="upload-area">
+                    <div class="upload-icon">📷</div>
+                    <p>Drag and drop photos or videos, or click to browse</p>
+                    <input type="file" id="media" name="media" accept="image/*,video/*" multiple hidden />
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('media').click()">
+                        Choose Files
+                    </button>
+                </div>
+            </div>
+            <div class="media-preview" id="media-preview"></div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn-ghost" onclick="history.back()">Cancel</button>
+            <button type="button" class="btn btn-secondary">Preview</button>
+            <button type="submit" class="btn btn-primary">@(isNew ? "Save Message" : "Update Message")</button>
+        </div>
+    </form>
+</div>

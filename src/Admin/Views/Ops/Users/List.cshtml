@@ -1,0 +1,87 @@
+<div class="admin-content">
+    <div class="page-header">
+        <h1>Users</h1>
+        <div class="page-actions">
+            <a href="https://app.descope.com" target="_blank" class="btn btn-secondary">
+                Manage in Descope ↗
+            </a>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <input type="search" placeholder="Search by name or email..." class="search-input" />
+        <select class="form-input filter-select">
+            <option value="">All Types</option>
+            <option value="benefactor">Benefactors</option>
+            <option value="beneficiary">Beneficiaries</option>
+        </select>
+        <select class="form-input filter-select">
+            <option value="">All Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>John Smith</strong></td>
+                <td>john@example.com</td>
+                <td><span class="badge badge-benefactor">Benefactor</span></td>
+                <td><span class="status-dot active"></span> Active</td>
+                <td>Jan 15, 2024</td>
+                <td>
+                    <a href="#" class="btn btn-ghost btn-sm" data-route="/Ops/Users/Detail?id=1">View</a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Emily Johnson</strong></td>
+                <td>emily@example.com</td>
+                <td><span class="badge badge-beneficiary">Beneficiary</span></td>
+                <td><span class="status-dot active"></span> Active</td>
+                <td>Jan 15, 2024</td>
+                <td>
+                    <a href="#" class="btn btn-ghost btn-sm" data-route="/Ops/Users/Detail?id=2">View</a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Michael Johnson</strong></td>
+                <td>michael@example.com</td>
+                <td><span class="badge badge-beneficiary">Beneficiary</span></td>
+                <td><span class="status-dot active"></span> Active</td>
+                <td>Jan 15, 2024</td>
+                <td>
+                    <a href="#" class="btn btn-ghost btn-sm" data-route="/Ops/Users/Detail?id=3">View</a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Sarah Williams</strong></td>
+                <td>sarah@example.com</td>
+                <td><span class="badge badge-benefactor">Benefactor</span></td>
+                <td><span class="status-dot active"></span> Active</td>
+                <td>Feb 1, 2024</td>
+                <td>
+                    <a href="#" class="btn btn-ghost btn-sm" data-route="/Ops/Users/Detail?id=4">View</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="pagination-info">Showing 1-4 of 247 users</span>
+        <div class="pagination-controls">
+            <button class="btn btn-ghost btn-sm" disabled>← Previous</button>
+            <button class="btn btn-ghost btn-sm">Next →</button>
+        </div>
+    </div>
+</div>

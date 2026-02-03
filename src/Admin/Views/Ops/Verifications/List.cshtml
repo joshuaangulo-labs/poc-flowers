@@ -1,0 +1,69 @@
+<div class="admin-content">
+    <div class="page-header">
+        <h1>Death Verifications</h1>
+        <p class="page-subtitle">Review and process death verification requests</p>
+    </div>
+
+    <div class="verification-stats">
+        <div class="stat-mini">
+            <span class="stat-value">1</span>
+            <span class="stat-label">Pending Review</span>
+        </div>
+        <div class="stat-mini">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Awaiting Documents</span>
+        </div>
+        <div class="stat-mini">
+            <span class="stat-value">24</span>
+            <span class="stat-label">Verified This Year</span>
+        </div>
+    </div>
+
+    <h2>Pending Review</h2>
+    <div class="verification-list">
+        <div class="verification-card">
+            <div class="verification-header">
+                <div class="verification-info">
+                    <h3>John Smith</h3>
+                    <p>Submitted by: Emily Johnson (Daughter)</p>
+                </div>
+                <span class="badge badge-warning">Pending Review</span>
+            </div>
+            <div class="verification-body">
+                <dl class="verification-details">
+                    <dt>Date of Death</dt>
+                    <dd>January 25, 2026</dd>
+                    <dt>Documents</dt>
+                    <dd>Death certificate uploaded</dd>
+                    <dt>Submitted</dt>
+                    <dd>January 28, 2026</dd>
+                    <dt>Active Schedules</dt>
+                    <dd>5 gift schedules, 2 beneficiaries</dd>
+                </dl>
+            </div>
+            <div class="verification-actions">
+                <a href="#" class="btn btn-primary" data-route="/Ops/Verifications/Detail?id=1">Review Now</a>
+                <button class="btn btn-ghost">Request More Info</button>
+            </div>
+        </div>
+    </div>
+
+    <h2>Awaiting Documents</h2>
+    <div class="verification-list">
+        <div class="verification-card muted">
+            <div class="verification-header">
+                <div class="verification-info">
+                    <h3>Robert Garcia</h3>
+                    <p>Submitted by: Maria Garcia (Spouse)</p>
+                </div>
+                <span class="badge badge-muted">Awaiting Documents</span>
+            </div>
+            <div class="verification-body">
+                <p class="verification-note">Requested death certificate on Jan 20. Follow up sent Jan 27.</p>
+            </div>
+            <div class="verification-actions">
+                <button class="btn btn-secondary">Send Reminder</button>
+            </div>
+        </div>
+    </div>
+</div>

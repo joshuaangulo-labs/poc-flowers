@@ -1,0 +1,82 @@
+<div class="portal-content">
+    <h1>Preferences</h1>
+    <p class="section-description">Manage your contact information and delivery preferences.</p>
+
+    <form class="form" id="preferences-form">
+        <div class="form-section">
+            <h2>Contact Information</h2>
+            <p class="form-help">Keep your contact info up to date so gifts can reach you.</p>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" value="emily@example.com" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" value="(555) 123-4567" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Delivery Address</h2>
+            <div class="form-group">
+                <label for="address1">Address Line 1</label>
+                <input type="text" id="address1" name="address1" class="form-input" value="456 Oak Avenue" />
+            </div>
+            <div class="form-group">
+                <label for="address2">Address Line 2</label>
+                <input type="text" id="address2" name="address2" class="form-input" value="Apt 2B" />
+            </div>
+            <div class="form-grid form-grid-3">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" class="form-input" value="Nashville" />
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" class="form-input" value="TN" />
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" id="zip" name="zip" class="form-input" value="37206" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Notifications</h2>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="emailNotify" checked />
+                    Email me when a gift is on its way
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="smsNotify" />
+                    Text me delivery updates
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="annualReminder" checked />
+                    Send me an annual reminder to update my contact info
+                </label>
+            </div>
+        </div>
+
+        <div class="form-section opt-out-section">
+            <h2>Opt Out</h2>
+            <p class="form-help warning">
+                If you no longer wish to receive gifts, you can opt out below. 
+                This cannot be undone, and the person who arranged your gifts will not be notified.
+            </p>
+            <button type="button" class="btn btn-danger">Opt Out of All Future Gifts</button>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Preferences</button>
+        </div>
+    </form>
+</div>

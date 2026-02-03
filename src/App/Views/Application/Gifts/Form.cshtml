@@ -1,0 +1,76 @@
+@{
+    var isNew = (bool?)ViewData["IsNew"] ?? true;
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>@(isNew ? "Create Gift" : "Edit Gift")</h1>
+    </div>
+
+    <form class="form" id="gift-form">
+        <div class="form-section">
+            <h2>Gift Details</h2>
+            <div class="form-group">
+                <label for="giftName">Gift Name</label>
+                <input type="text" id="giftName" name="giftName" class="form-input" placeholder="e.g., Birthday Flowers" required />
+            </div>
+            <div class="form-group">
+                <label for="beneficiary">Beneficiary</label>
+                <select id="beneficiary" name="beneficiary" class="form-input" required>
+                    <option value="">Select beneficiary...</option>
+                    <option value="1">Emily Johnson (Daughter)</option>
+                    <option value="2">Michael Johnson (Son)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="giftType">Gift Type</label>
+                <select id="giftType" name="giftType" class="form-input" required>
+                    <option value="">Select type...</option>
+                    <option value="flowers">Flowers</option>
+                    <option value="gift">Physical Gift</option>
+                    <option value="experience">Experience</option>
+                    <option value="donation">Charitable Donation</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Gift Selection</h2>
+            <div class="catalog-preview">
+                <p>Browse our catalog to select a specific gift, or describe what you'd like:</p>
+                <a href="#catalog" class="btn btn-secondary" data-route="/Application/Gifts/Catalog">Browse Catalog</a>
+            </div>
+            <div class="form-group">
+                <label for="giftDescription">Gift Description</label>
+                <textarea id="giftDescription" name="giftDescription" class="form-input" rows="4" placeholder="Describe the gift you have in mind..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget Range</label>
+                <select id="budget" name="budget" class="form-input">
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-250">$100 - $250</option>
+                    <option value="250-500">$250 - $500</option>
+                    <option value="500+">$500+</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Personal Message</h2>
+            <div class="form-group">
+                <label for="message">Message to Include</label>
+                <textarea id="message" name="message" class="form-input" rows="6" placeholder="Write a heartfelt message to accompany this gift..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="includePhoto" />
+                    Include a photo or video
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn-ghost" onclick="history.back()">Cancel</button>
+            <button type="submit" class="btn btn-primary">@(isNew ? "Create Gift" : "Save Changes")</button>
+        </div>
+    </form>
+</div>

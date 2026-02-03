@@ -1,0 +1,28 @@
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/admin.css?@ViewData["AssemblyVersionWithTimestamp"]" />
+    <link rel="icon" href="~/img/favicon.ico" type="image/x-icon" />
+</head>
+<body class="admin">
+<input type="hidden" id="app-version" value="@ViewData["AssemblyVersion"]" />
+
+<div data-panel="top"></div>
+<div class="app-container">
+    <div data-panel="left"></div>
+    <div class="main-content">
+        <div data-panel="center"></div>
+    </div>
+</div>
+<div data-panel="modal"></div>
+
+<script type="importmap">@Html.Raw(ViewData["ImportMap"])</script>
+<script type="module" src="~/js/admin.js?@ViewData["AssemblyVersionWithTimestamp"]"></script>
+</body>
+</html>

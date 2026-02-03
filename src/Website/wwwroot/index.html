@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Legacy Gifts — Keep Your Love Alive</title>
+    <link rel="stylesheet" href="/css/site.css" />
+    <script src="https://unpkg.com/@aspect-build/aspect-web-components@0.2.4/dist/wc/descope-wc.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">Legacy Gifts</a>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <button id="login-btn" class="btn btn-primary">Sign In</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Keep Your Love Alive</h1>
+                <p class="hero-subtitle">
+                    Schedule meaningful gifts to be delivered to your loved ones on special occasions — 
+                    even after you're gone. Birthdays, anniversaries, graduations — your presence continues.
+                </p>
+                <button id="get-started-btn" class="btn btn-large btn-primary">Get Started</button>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>What You Can Do</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💐</div>
+                    <h3>Recurring Gifts</h3>
+                    <p>Schedule flowers, gifts, or experiences to be delivered on meaningful dates for years to come.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💌</div>
+                    <h3>Personal Messages</h3>
+                    <p>Attach heartfelt messages, videos, or photos to each delivery — your words, your voice.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Bank-level security protects your information. Messages are encrypted and only delivered to your beneficiaries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>AI-assisted scheduling handles inflation adjustments, vendor changes, and delivery logistics automatically.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Plan</h3>
+                    <p>Set up beneficiary profiles and choose gifts, messages, and delivery schedules.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Fund Your Account</h3>
+                    <p>Pre-fund your plan with transparent pricing and built-in inflation buffers.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>We Handle the Rest</h3>
+                    <p>After verification, we execute your plan — coordinating vendors, tracking deliveries, and keeping your loved ones connected to you.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <h2>Simple, Transparent Pricing</h2>
+            <p class="pricing-subtitle">Pay for the gifts you schedule plus a small service fee. No hidden costs.</p>
+            <div class="pricing-card">
+                <h3>Coming Soon</h3>
+                <p>We're currently in private beta. Sign up to be notified when we launch.</p>
+                <button id="notify-btn" class="btn btn-secondary">Notify Me</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Legacy Gifts. All rights reserved.</p>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <button id="close-modal" class="modal-close">&times;</button>
+            <descope-wc
+                project-id="YOUR_PROJECT_ID"
+                flow-id="sign-up-or-in"
+            ></descope-wc>
+        </div>
+    </div>
+
+    <script>
+        const PROJECT_ID = 'YOUR_PROJECT_ID';
+        const APP_URL = 'https://localhost:5010';
+        const ADMIN_URL = 'https://localhost:5020';
+
+        const modal = document.getElementById('auth-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const getStartedBtn = document.getElementById('get-started-btn');
+        const closeModal = document.getElementById('close-modal');
+        const notifyBtn = document.getElementById('notify-btn');
+
+        function openModal() {
+            modal.classList.add('active');
+        }
+
+        function closeModalFn() {
+            modal.classList.remove('active');
+        }
+
+        loginBtn.addEventListener('click', openModal);
+        getStartedBtn.addEventListener('click', openModal);
+        closeModal.addEventListener('click', closeModalFn);
+        notifyBtn.addEventListener('click', openModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModalFn();
+        });
+
+        // Handle Descope success
+        const descopeWc = document.querySelector('descope-wc');
+        descopeWc.addEventListener('success', async (e) => {
+            const sessionToken = e.detail?.sessionJwt;
+            if (!sessionToken) {
+                console.error('No session token in success event');
+                return;
+            }
+
+            // Decode JWT to get roles
+            const payload = JSON.parse(atob(sessionToken.split('.')[1]));
+            const roles = payload.roles || [];
+
+            // Route based on role - admin/ops/support go to Admin, everyone else to App
+            let targetUrl = APP_URL;
+            if (roles.includes('admin') || roles.includes('ops') || roles.includes('support')) {
+                targetUrl = ADMIN_URL;
+            }
+            // benefactor and beneficiary roles both go to APP_URL
+
+            // Redirect with token in fragment (never sent to server in request)
+            window.location.href = `${targetUrl}/auth/callback#token=${sessionToken}`;
+        });
+
+        descopeWc.addEventListener('error', (e) => {
+            console.error('Descope error:', e.detail);
+        });
+    </script>
+</body>
+</html>
