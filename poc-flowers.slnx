@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Flowers.Shared/Flowers.Shared.csproj" />
+    <Project Path="src/Website/Website.csproj" />
+    <Project Path="src/Flowers.Web/Flowers.Web.csproj" />
+    <Project Path="src/Flowers.Web.Admin/Flowers.Web.Admin.csproj" />
+  </Folder>
+</Solution>

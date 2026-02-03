@@ -1,4 +1,4 @@
-# Legacy Gifts — POC
+# Flowers — POC
 
 Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund meaningful gifts that continue to reach your loved ones on birthdays, anniversaries, and special occasions — even after you're gone.
 
@@ -15,8 +15,8 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund me
               │              │              │
               ▼              ▼              ▼
      ┌────────────┐  ┌────────────┐  ┌────────────┐
-     │    App     │  │    App     │  │   Admin    │
-     │ Benefactor │  │Beneficiary │  │  Ops/Admin │
+     │ Flowers.Web│  │ Flowers.Web│  │Flowers.Web │
+     │ Benefactor │  │Beneficiary │  │   .Admin   │
      │   :5010    │  │   :5010    │  │   :5020    │
      └────────────┘  └────────────┘  └────────────┘
               │              │              │
@@ -30,12 +30,13 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund me
 
 ## Projects
 
-| Project | Port | Description |
-|---------|------|-------------|
-| **Website** | 5000 | Public marketing site with embedded Descope login |
-| **App** | 5010 | Benefactor + Beneficiary portal (role-based views) |
-| **Admin** | 5020 | Admin/Ops/Support operations portal |
-| **Shared** | — | Common auth extensions and utilities |
+| Project | Namespace | Port | Description |
+|---------|-----------|------|-------------|
+| **Website** | — | 5000 | Public marketing site with embedded Descope login |
+| **Flowers.Web** | `Flowers.Web` | 5010 | Benefactor + Beneficiary portal (role-based views) |
+| **Flowers.Web.Admin** | `Flowers.Web.Admin` | 5020 | Admin/Ops/Support operations portal |
+| **Flowers.Shared** | `Flowers.Shared` | — | Common auth extensions and utilities |
+| **Flowers.App** | `Flowers.App` | — | Background worker (planned) |
 
 ## Tech Stack
 
@@ -63,8 +64,8 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund me
 5. Replace `YOUR_PROJECT_ID` in:
    - `src/Website/wwwroot/index.html`
    - `src/Website/appsettings.json`
-   - `src/App/appsettings.json`
-   - `src/Admin/appsettings.json`
+   - `src/Flowers.Web/appsettings.json`
+   - `src/Flowers.Web.Admin/appsettings.json`
 
 ## Running Locally
 
@@ -80,11 +81,11 @@ Start all projects:
 # Terminal 1 — Website
 dotnet run --project src/Website
 
-# Terminal 2 — App
-dotnet run --project src/App
+# Terminal 2 — Flowers.Web
+dotnet run --project src/Flowers.Web
 
-# Terminal 3 — Admin
-dotnet run --project src/Admin
+# Terminal 3 — Flowers.Web.Admin
+dotnet run --project src/Flowers.Web.Admin
 ```
 
 Open [https://localhost:5000](https://localhost:5000) in your browser.
@@ -95,15 +96,15 @@ Open [https://localhost:5000](https://localhost:5000) in your browser.
 2. Descope login component handles authentication
 3. On success, JWT with roles is returned
 4. JavaScript reads roles and redirects to appropriate app:
-   - `admin`, `ops`, `support` → Admin (:5020)
-   - `benefactor`, `beneficiary` → App (:5010)
+   - `admin`, `ops`, `support` → Flowers.Web.Admin (:5020)
+   - `benefactor`, `beneficiary` → Flowers.Web (:5010)
 5. App receives token in URL fragment, sets HttpOnly cookie
 6. Subsequent requests are authenticated via cookie
 
 ## Roles & Access
 
-| Role | App Access | Admin Access | Capabilities |
-|------|------------|--------------|--------------|
+| Role | Flowers.Web | Flowers.Web.Admin | Capabilities |
+|------|-------------|-------------------|--------------|
 | `benefactor` | ✅ | ❌ | Create/manage beneficiaries, gifts, schedules |
 | `beneficiary` | ✅ | ❌ | View gifts, manage contact info, opt-out |
 | `support` | ❌ | ✅ | Read access, view exceptions |
@@ -113,12 +114,12 @@ Open [https://localhost:5000](https://localhost:5000) in your browser.
 ## Project Structure
 
 ```
-legacy-gifts/
-├── legacy-gifts.slnx
+poc-flowers/
+├── poc-flowers.slnx
 ├── CLAUDE.md                    # AI assistant instructions
 └── src/
-    ├── Shared/                  # Common auth + utilities
-    │   ├── Shared.csproj
+    ├── Flowers.Shared/          # Common auth + utilities
+    │   ├── Flowers.Shared.csproj
     │   ├── DescopeAuthExtensions.cs
     │   └── AuthCallbackPage.cs
     ├── Website/                 # Public marketing (localhost:5000)
@@ -127,8 +128,8 @@ legacy-gifts/
     │   └── wwwroot/
     │       ├── index.html
     │       └── css/site.css
-    ├── App/                     # Benefactor + Beneficiary (localhost:5010)
-    │   ├── App.csproj
+    ├── Flowers.Web/             # Benefactor + Beneficiary (localhost:5010)
+    │   ├── Flowers.Web.csproj
     │   ├── Program.cs
     │   ├── Controllers/
     │   │   ├── Application/     # Benefactor features
@@ -138,8 +139,8 @@ legacy-gifts/
     │       ├── css/
     │       ├── js/
     │       └── import-map.json
-    └── Admin/                   # Admin/Ops/Support (localhost:5020)
-        ├── Admin.csproj
+    └── Flowers.Web.Admin/       # Admin/Ops/Support (localhost:5020)
+        ├── Flowers.Web.Admin.csproj
         ├── Program.cs
         ├── Controllers/Ops/
         ├── Views/Ops/
@@ -156,7 +157,7 @@ legacy-gifts/
 
 ## Key Features (POC)
 
-### Benefactor Portal
+### Benefactor Portal (Flowers.Web)
 - Dashboard with stats and quick actions
 - Beneficiary management (CRUD)
 - Gift creation and catalog
@@ -164,14 +165,14 @@ legacy-gifts/
 - Schedule management
 - Funding and billing settings
 
-### Beneficiary Portal
+### Beneficiary Portal (Flowers.Web)
 - View upcoming and past gifts
 - Read personal messages
 - Update contact information
 - Manage notification preferences
 - Opt-out capability
 
-### Admin Portal
+### Admin Portal (Flowers.Web.Admin)
 - Operations dashboard
 - User search and management
 - Delivery tracking and exceptions
@@ -185,7 +186,7 @@ legacy-gifts/
 - [ ] Real Descope project configuration
 - [ ] Vendor API integrations (FTD, 1-800-Flowers)
 - [ ] Payment processing (Stripe)
-- [ ] Background worker for scheduled tasks
+- [ ] Flowers.App background worker for scheduled tasks
 - [ ] Email/SMS notification service
 - [ ] Media upload for messages
 - [ ] AI message suggestions
