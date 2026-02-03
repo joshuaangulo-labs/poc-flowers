@@ -7,7 +7,7 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Three appli
 - **Website** — Public marketing site, static HTML/JS, embedded Descope login, role-based routing
 - **Flowers.Web** — Benefactor + Beneficiary portal (single app, role-based views via ASP.NET policies)
 - **Flowers.Web.Admin** — Support/Ops/Admin operations portal
-- **Flowers.App** — Background worker for scheduled tasks (planned)
+- **Flowers.App** — Background worker for scheduled tasks
 
 ## Tech Stack
 - .NET 10 (ASP.NET Core MVC)
@@ -39,10 +39,16 @@ poc-flowers/
     │   ├── Views/
     │   ├── wwwroot/
     │   └── Program.cs
-    └── Flowers.Web.Admin/         # Admin/Ops/Support (localhost:5020)
-        ├── Controllers/
-        ├── Views/
-        ├── wwwroot/
+    ├── Flowers.Web.Admin/         # Admin/Ops/Support (localhost:5020)
+    │   ├── Controllers/
+    │   ├── Views/
+    │   ├── wwwroot/
+    │   └── Program.cs
+    └── Flowers.App/               # Background worker service
+        ├── Workers/
+        │   ├── ScheduleWorker.cs
+        │   ├── DeliveryWorker.cs
+        │   └── NotificationWorker.cs
         └── Program.cs
 ```
 
@@ -50,7 +56,7 @@ poc-flowers/
 - `Flowers.Shared` — Shared utilities and auth
 - `Flowers.Web` — Main benefactor/beneficiary app
 - `Flowers.Web.Admin` — Admin portal
-- `Flowers.App` — Background worker (future)
+- `Flowers.App` — Background worker (scheduling, delivery, notifications)
 
 ## Roles
 - `benefactor` — Can create/manage beneficiaries, gifts, schedules
@@ -61,10 +67,10 @@ poc-flowers/
 
 ## Running Locally
 ```bash
-# All three apps
-dotnet run --project src/Website
-dotnet run --project src/Flowers.Web
-dotnet run --project src/Flowers.Web.Admin
+dotnet run --project src/Website           # Marketing site (:5000)
+dotnet run --project src/Flowers.Web       # Benefactor/Beneficiary (:5010)
+dotnet run --project src/Flowers.Web.Admin # Admin/Ops (:5020)
+dotnet run --project src/Flowers.App       # Background worker
 ```
 
 ## Descope Setup

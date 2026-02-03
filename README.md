@@ -36,7 +36,7 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund me
 | **Flowers.Web** | `Flowers.Web` | 5010 | Benefactor + Beneficiary portal (role-based views) |
 | **Flowers.Web.Admin** | `Flowers.Web.Admin` | 5020 | Admin/Ops/Support operations portal |
 | **Flowers.Shared** | `Flowers.Shared` | — | Common auth extensions and utilities |
-| **Flowers.App** | `Flowers.App` | — | Background worker (planned) |
+| **Flowers.App** | `Flowers.App` | — | Background worker (scheduling, delivery, notifications) |
 
 ## Tech Stack
 
@@ -86,6 +86,9 @@ dotnet run --project src/Flowers.Web
 
 # Terminal 3 — Flowers.Web.Admin
 dotnet run --project src/Flowers.Web.Admin
+
+# Terminal 4 — Flowers.App (background worker)
+dotnet run --project src/Flowers.App
 ```
 
 Open [https://localhost:5000](https://localhost:5000) in your browser.
@@ -139,12 +142,19 @@ poc-flowers/
     │       ├── css/
     │       ├── js/
     │       └── import-map.json
-    └── Flowers.Web.Admin/       # Admin/Ops/Support (localhost:5020)
-        ├── Flowers.Web.Admin.csproj
+    ├── Flowers.Web.Admin/       # Admin/Ops/Support (localhost:5020)
+    │   ├── Flowers.Web.Admin.csproj
+    │   ├── Program.cs
+    │   ├── Controllers/Ops/
+    │   ├── Views/Ops/
+    │   └── wwwroot/
+    └── Flowers.App/             # Background worker
+        ├── Flowers.App.csproj
         ├── Program.cs
-        ├── Controllers/Ops/
-        ├── Views/Ops/
-        └── wwwroot/
+        └── Workers/
+            ├── ScheduleWorker.cs
+            ├── DeliveryWorker.cs
+            └── NotificationWorker.cs
 ```
 
 ## Frontend Architecture
@@ -186,7 +196,7 @@ poc-flowers/
 - [ ] Real Descope project configuration
 - [ ] Vendor API integrations (FTD, 1-800-Flowers)
 - [ ] Payment processing (Stripe)
-- [ ] Flowers.App background worker for scheduled tasks
+- [ ] Flowers.App worker implementation (currently scaffolded)
 - [ ] Email/SMS notification service
 - [ ] Media upload for messages
 - [ ] AI message suggestions
