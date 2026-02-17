@@ -1,5 +1,5 @@
 using Flowers.Web.Utility;
-using Flowers.Shared;
+using Flowers.Core.Infrastructure;
 using Serilog;
 
 namespace Flowers.Web;

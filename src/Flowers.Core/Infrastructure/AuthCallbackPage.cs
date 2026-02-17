@@ -1,4 +1,4 @@
-namespace Flowers.Shared;
+namespace Flowers.Core.Infrastructure;
 
 /// <summary>
 /// Inline HTML page that handles the auth callback fragment and sets the session cookie.

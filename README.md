@@ -35,7 +35,7 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Pre-fund me
 | **Website** | — | 5000 | Public marketing site with embedded Descope login |
 | **Flowers.Web** | `Flowers.Web` | 5010 | Benefactor + Beneficiary portal (role-based views) |
 | **Flowers.Web.Admin** | `Flowers.Web.Admin` | 5020 | Admin/Ops/Support operations portal |
-| **Flowers.Shared** | `Flowers.Shared` | — | Common auth extensions and utilities |
+| **Flowers.Core** | `Flowers.Core` | — | Domain, repositories, and infrastructure (auth, utilities) |
 | **Flowers.App** | `Flowers.App` | — | Background worker (scheduling, delivery, notifications) |
 
 ## Tech Stack
@@ -121,10 +121,13 @@ poc-flowers/
 ├── poc-flowers.slnx
 ├── CLAUDE.md                    # AI assistant instructions
 └── src/
-    ├── Flowers.Shared/          # Common auth + utilities
-    │   ├── Flowers.Shared.csproj
-    │   ├── DescopeAuthExtensions.cs
-    │   └── AuthCallbackPage.cs
+    ├── Flowers.Core/            # Domain, repositories, and infrastructure
+    │   ├── Flowers.Core.csproj
+    │   ├── Infrastructure/      # Auth, cross-cutting concerns
+    │   │   ├── DescopeAuthExtensions.cs
+    │   │   └── AuthCallbackPage.cs
+    │   ├── Domain/              # Entities, value objects
+    │   └── Repositories/        # IXRepository interfaces + implementations
     ├── Website/                 # Public marketing (localhost:5000)
     │   ├── Website.csproj
     │   ├── Program.cs

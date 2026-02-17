@@ -27,8 +27,12 @@ Platform for scheduling post-death gift deliveries to beneficiaries. Three appli
 poc-flowers/
 ├── poc-flowers.slnx
 └── src/
-    ├── Flowers.Shared/            # Common auth + utilities
-    │   └── DescopeAuthExtensions.cs
+    ├── Flowers.Core/              # Domain, repositories, and infrastructure
+    │   ├── Infrastructure/        # Auth, cross-cutting concerns
+    │   │   ├── DescopeAuthExtensions.cs
+    │   │   └── AuthCallbackPage.cs
+    │   ├── Domain/                # Entities, value objects
+    │   └── Repositories/          # IXRepository interfaces + implementations
     ├── Website/                   # Public marketing (localhost:5000)
     │   ├── wwwroot/
     │   │   ├── index.html
@@ -53,7 +57,7 @@ poc-flowers/
 ```
 
 ## Namespaces
-- `Flowers.Shared` — Shared utilities and auth
+- `Flowers.Core` — Domain, repositories, and infrastructure (auth, utilities)
 - `Flowers.Web` — Main benefactor/beneficiary app
 - `Flowers.Web.Admin` — Admin portal
 - `Flowers.App` — Background worker (scheduling, delivery, notifications)

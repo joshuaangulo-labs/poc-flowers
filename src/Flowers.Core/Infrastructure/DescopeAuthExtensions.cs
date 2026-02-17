@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Flowers.Shared;
+namespace Flowers.Core.Infrastructure;
 
 public static class DescopeAuthExtensions
 {
