@@ -8,8 +8,9 @@
 
 **Flowers** is a legacy gift scheduling platform that allows people to plan and pre-pay for gifts (flowers, letters, video messages, keepsakes) to be delivered to loved ones after they pass away. The service uses a trusted executor system to activate deliveries.
 
-## Site Structure (7 pages)
+## Site Structure (13 pages)
 
+### Public Pages
 | # | Page | Route | Description |
 |---|------|-------|-------------|
 | 1 | **Homepage** | `/` | Landing page with hero, how-it-works, packages, testimonials, trust signals |
@@ -19,6 +20,16 @@
 | 5 | **FAQ** | `/faq` | 20 questions across 5 categories (accordion) |
 | 6 | **About** | `/about` | Origin story, values, mission, team (4 members) |
 | 7 | **Contact** | `/contact` | Contact info + form + live chat |
+
+### Authenticated Pages
+| # | Page | Route | Description |
+|---|------|-------|-------------|
+| 8 | **Login** | `/account/login` | Email/password sign-in with remember me, forgot password |
+| 9 | **Dashboard** | `/account/dashboard` | Stats, upcoming deliveries, quick actions, recent activity |
+| 10 | **Schedule New Gift** | `/account/schedule` | 4-step wizard (Recipient → Gift → Message → Review) |
+| 11 | **My Scheduled Gifts** | `/account/my-gifts` | 8 gifts with filters, edit/delete, message previews |
+| 12 | **Received Gifts** | `/account/received` | Beneficiary view — 3 received gifts with full personal messages |
+| 13 | **Settings** | `/account/settings` | Profile, trusted executors, security, notifications, danger zone |
 
 ## Key Features
 
@@ -61,7 +72,8 @@
 
 ## Files
 
-- `sitemap.md` — Complete text content extraction with UI hierarchy for every page
+- `sitemap.md` — Complete text content for all public pages
+- `sitemap-auth.md` — Complete text content for all authenticated pages
 - `slide-01-home-*.png` — Homepage screenshots (6 viewport captures)
 - `slide-02-how-it-works-*.png` — How It Works page (2 captures)
 - `slide-03-legacy-gifts-top.png` — Legacy Gifts catalog page
@@ -69,6 +81,11 @@
 - `slide-05-faq-top.png` — FAQ page
 - `slide-06-about-top.png` — About page
 - `slide-07-contact-top.png` — Contact page
+- `auth-login-01.png` — Login page
+- `auth-dashboard-*.png` — Dashboard (mobile + desktop, 3 captures)
+- `auth-schedule-01.png` — Schedule new gift wizard (Step 1)
+- `auth-my-gifts-*.png` — My Scheduled Gifts (3 scroll captures, 8 gift cards)
+- `auth-received-*.png` — Received Gifts (3 scroll captures, 3 gift cards)
 
 ## For Claude / Development
 
